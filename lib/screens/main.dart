@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_flutter_app/screens/ListScreen.dart';
+import 'package:test_flutter_app/screens/LoginScreen.dart';
+import 'package:test_flutter_app/screens/UrlImageScreen.dart';
 import 'package:test_flutter_app/widgets/TwoWordsWidget.dart';
 
 void main() => runApp(new MyApp());
@@ -88,6 +90,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   new FlatButton(
                       onPressed: () => _showMessage(context, "Next"),
                       child: Text("Show Message")),
+                  new FlatButton(
+                      onPressed: () => _navigateToUrlImageScreen(context),
+                      child: Text("Не ходи сюды")),
+                  new FlatButton(
+                      onPressed: () => _navigateToLoginScreen(context),
+                      child: Text("Open Login Page")),
                   new IconButton(
                     icon: new Icon(Icons.arrow_forward),
                     onPressed: () => _navigateToListScreen(context),
@@ -115,6 +123,20 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ListScreen()),
+    );
+  }
+
+  void _navigateToUrlImageScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => UrlImageScreen()),
+    );
+  }
+
+  void _navigateToLoginScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 }
