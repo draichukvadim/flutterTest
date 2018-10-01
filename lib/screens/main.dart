@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_flutter_app/screens/ListScreen.dart';
 import 'package:test_flutter_app/screens/LoginScreen.dart';
 import 'package:test_flutter_app/screens/UrlImageScreen.dart';
+import 'package:test_flutter_app/widgets/BatteryLevelWidget.dart';
 import 'package:test_flutter_app/widgets/TwoWordsWidget.dart';
 
 void main() => runApp(new MyApp());
@@ -75,28 +76,27 @@ class _MyHomePageState extends State<MyHomePage> {
         title: new Text(widget.title),
       ),
       body: Builder(
-        builder: (context) => Center(
-              child: new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+        builder: (context) => Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new TwoWordsWidget(),
-                  new Text(
-                    'You have pushed PLUS button this many times:',
-                  ),
-                  new Text(
+                  TwoWordsWidget(),
+                  Text('You have pushed PLUS button this many times:'),
+                  Text(
                     '$_counter',
                     style: Theme.of(context).textTheme.display1,
                   ),
-                  new FlatButton(
+                  FlatButton(
                       onPressed: () => _showMessage(context, "Next"),
                       child: Text("Show Message")),
-                  new FlatButton(
+                  FlatButton(
                       onPressed: () => _navigateToUrlImageScreen(context),
                       child: Text("Не ходи сюды")),
-                  new FlatButton(
+                  FlatButton(
                       onPressed: () => _navigateToLoginScreen(context),
                       child: Text("Open Login Page")),
-                  new IconButton(
+                  BatteryLevelWidget(),
+                  IconButton(
                     icon: new Icon(Icons.arrow_forward),
                     onPressed: () => _navigateToListScreen(context),
                   )
