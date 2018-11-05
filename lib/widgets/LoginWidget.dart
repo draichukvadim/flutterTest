@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class LoginWidget extends StatefulWidget {
   @override
@@ -9,6 +13,7 @@ class LoginWidget extends StatefulWidget {
 
 class LoginFormState extends State<LoginWidget> {
   final _formKey = GlobalKey<FormState>();
+  File _image;
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +50,25 @@ class LoginFormState extends State<LoginWidget> {
               child: Text('Submit'),
             ),
           ),
+          Center(
+            child: _image == null
+                ? new Text('No image selected.')
+                : new Image.file(_image),
+          ),
+          FlatButton(
+            onPressed: getImage,
+            child: Text("Pick image"),
+          )
         ],
       ),
     );
+  }
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
   }
 }
