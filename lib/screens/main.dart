@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_flutter_app/screens/ListScreen.dart';
 import 'package:test_flutter_app/screens/LoginScreen.dart';
 import 'package:test_flutter_app/screens/UrlImageScreen.dart';
+import 'package:test_flutter_app/screens/db_screen.dart';
 import 'package:test_flutter_app/widgets/BatteryLevelWidget.dart';
 import 'package:test_flutter_app/widgets/TwoWordsWidget.dart';
 
@@ -64,6 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   FlatButton(
                       onPressed: () => _navigateToLoginScreen(context),
                       child: Text("Open Login Page")),
+                  FlatButton(
+                      onPressed: () => _navigateToDbScreen(context),
+                      child: Text("Open DB Screen")),
                   BatteryLevelWidget(),
                   IconButton(
                     icon: new Icon(Icons.arrow_forward),
@@ -106,6 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
+  }
+
+  void _navigateToDbScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => DbScreen()),
     );
   }
 }
